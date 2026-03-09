@@ -102,7 +102,7 @@
 
   <section class="hero teaser">
     <hr class="rounded">
-    <div class="container is-max-widescreen">
+    <div class="container is-max-widescreen" style="max-width: 58%;">
       <!-- <div class="rows">
         <div class="publication-video" style="margin-bottom: 2rem;">
           <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" frameborder="0" allow="autoplay; encrypted-media"
@@ -145,7 +145,7 @@
       <div class="rows">
         <h2 class="title is-3">Overview of DiT4DiT</h2>
         <div style="text-align: center;">
-          <img src="media/figures/pipeline.jpg" class="method-image" style="width: 60%;" />
+          <img src="media/figures/pipeline.jpg" class="method-image" style="width: 80%;" />
         </div>
         <p class="content has-text-justified">
           <b>DiT4DiT</b> is an end-to-end Video-Action Model with a cascaded dual-DiT architecture.
@@ -198,7 +198,7 @@
           including &pi;<sub>0.5</sub> (96.9%), CogVLA (97.4%), and OpenVLA-OFT (97.1%). Particularly strong on
           LIBERO-Long (extended horizon): <b>97.6%</b>.
         </p>
-        <div class="table-container">
+        <div class="table-container" style="transform: scale(0.8); transform-origin: top center; margin-bottom: -3%;">
           <table class="table is-bordered is-striped is-hoverable is-fullwidth">
             <thead>
               <tr>
@@ -472,29 +472,68 @@
       <!--Real-World Experiments-->
       <hr class="rounded">
       <div class="rows">
-        <h2 class="title is-3">Real-World Experiments</h2>
+        <h2 class="title is-3">Real-World Demonstrations</h2>
         <p class="content has-text-justified">
           We evaluate DiT4DiT on seven household tasks with the <b>Unitree G1 humanoid robot</b>:
           pick-and-place, arrange flower, stack cups, insert plate, box packaging, move spoon, and drawer interaction.
           DiT4DiT comprehensively outperforms both GR00T-N1.5 (pre-trained with more data) and Qwen3DiT across all
           tasks.
         </p>
+        
+        <div style="transform: scale(0.8); transform-origin: top center; margin-bottom: -17%;">
+        <!-- Row 1: 2 videos -->
         <div class="columns">
-          <div class="column has-text-centered">
-            <p style="text-align:center;">
-              <img width="80%" src="media/figures/real_exp.jpg" class="method-image" />
-            </p>
+          <div class="column is-half has-text-centered">
+            <video controls autoplay loop muted playsinline width="100%">
+              <source src="media/videos/eggplant.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Pick and Place (1x speed)</p>
+          </div>
+          <div class="column is-half has-text-centered">
+            <video controls autoplay loop muted playsinline width="100%">
+              <source src="media/videos/flower.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Arrange the Flower (1x speed)</p>
           </div>
         </div>
 
-        <h3 class="title is-4">Real-World Task Demonstrations</h3>
+        <!-- Row 2: 2 videos -->
         <div class="columns">
-          <div class="column has-text-centered">
-            <!-- TODO: Replace with actual demo video -->
-            <video id="real-task-video" controls autoplay loop muted width="100%">
-              <source src="media/videos/real_demo.mp4" type="video/mp4">
+          <div class="column is-half has-text-centered">
+            <video controls autoplay loop muted playsinline width="100%">
+              <source src="media/videos/cups.mp4" type="video/mp4">
             </video>
+            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Stack up the Cups (1x speed)</p>
           </div>
+          <div class="column is-half has-text-centered">
+            <video controls autoplay loop muted playsinline width="100%">
+              <source src="media/videos/plate.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Insert Plate into the Rack (1x speed)</p>
+          </div>
+        </div>
+
+        <!-- Row 3: 3 videos -->
+        <div class="columns">
+          <div class="column is-one-third has-text-centered">
+            <video controls autoplay loop muted playsinline width="100%">
+              <source src="media/videos/packing.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Box Packing (1x speed)</p>
+          </div>
+          <div class="column is-one-third has-text-centered">
+            <video controls autoplay loop muted playsinline width="100%">
+              <source src="media/videos/spoon.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Move the Spoon (1x speed)</p>
+          </div>
+          <div class="column is-one-third has-text-centered">
+            <video controls autoplay loop muted playsinline width="100%">
+              <source src="media/videos/drawer.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Drawer Interaction (1x speed)</p>
+          </div>
+        </div>
         </div>
       </div>
 
