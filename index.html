@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="DiT4DiT: Unleashing the Potential of Video Generation for Generalizable Robot Control">
+  <meta name="keywords"
+    content="Video Generation, Diffusion Transformer, Robot Control, Vision-Language-Action, Flow Matching, Robotic Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DiT4DiT | Unleashing the Potential of Video Generation for Generalizable Robot Control
+  </title>
+
+  <!-- Thumbnail for social media sharing -->
+  <meta property="og:image" content="media/figures/pipeline.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="media/figures/favicon.png" type="image/png">
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/fontawesome/css/fontawesome.css">
+  <link rel="stylesheet" href="static/fontawesome/css/brands.css">
+  <link rel="stylesheet" href="static/fontawesome/css/light.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-fullhd">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">DiT4DiT: Unleashing the Potential of Video Generation <br> for
+              Generalizable Robot Control</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a target="_blank" href="https://teleema.github.io/">Teli Ma</a>
+                <sup>1,2</sup>
+              </span>
+              <span class="author-block">
+                <a target="_blank" href="https://jiaazheng.github.io/">Jia Zheng</a>
+                <sup>1,2</sup>
+              </span>
+              <span class="author-block">
+                <a target="_blank" href="https://scholar.google.com/citations?user=GaJXZ-UAAAAJ&hl=en">Zifan
+                  Wang</a><sup>1,2</sup>
+              </span>
+              <span class="author-block">
+                <a target="_blank" href="https://scholar.google.com/citations?user=nvzF-RMAAAAJ&hl=en">Chunli
+                  Jiang</a><sup>1</sup>
+              </span>
+              <span class="author-block">
+                <a target="_blank" href="https://scholar.google.com/citations?user=GaJXZ-UAAAAJ&hl=en">Zifan
+                  Wang</a><sup>1,2</sup>
+              </span>
+              <span class="author-block">
+                <a target="_blank" href="https://junweiliang.me/index.html">Junwei Liang</a>,
+                <!-- <sup>1,2*</sup> -->
+              </span>
+              <span class="author-block">
+                <a target="_blank" href="https://shuoyangrobotics.github.io/">Shuo Yang</a>,
+                <!-- <sup>1,2*</sup> -->
+              </span>
+            </div>
+            <div class="is-size-5 affiliation">
+              <sup>1</sup>xxxx<sup>2</sup>hhhh
+            </div>
+            <br>
+            <!-- <div class="affiliation-note">
+              <sup>&dagger;</sup> Equal contributions. <sup>*</sup> Corresponding author.
+            </div> -->
+            <div class="button-container">
+              <!-- TODO: Update links when available -->
+              <a href="#" target="_blank" class="button"><i class="ai ai-arxiv"></i>&emsp14;arXiv</a>
+              <a href="#" target="_blank" class="button"><i class="fa-light fa-film"></i>&emsp14;Video</a>
+              <a href="#" target="_blank" class="button"><i class="fa-light fa-code"></i>&emsp14;Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <hr class="rounded">
+    <div class="container is-max-widescreen">
+      <div class="rows">
+        <!-- TODO: Replace with actual YouTube video ID -->
+        <div class="publication-video" style="margin-bottom: 2rem;">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" frameborder="0" allow="autoplay; encrypted-media"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!--Abstract-->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Vision-Language-Action (VLA) models have demonstrated strong potential in
+              robotic manipulation, but their scaling is inherently bottlenecked by the scarcity
+              of costly action supervision. Meanwhile, generative video models naturally encode
+              rich spatiotemporal physics, yet existing robotic applications typically rely
+              on slow, multi-stage pipelines that fail to fully exploit intermediate generative representations
+              for end-to-end control. To bridge this gap, we present <b>DiT4DiT</b>, an
+              end-to-end Video-Action Model that unifies a video Diffusion Transformer (DiT)
+              and an action DiT within a cohesive cascaded architecture. Instead of relying on
+              fully reconstructed future frames, our video branch models future dynamics while
+              extracting intermediate denoising activations as stable, temporally grounded conditions
+              for action prediction. To train both branches coherently, we introduce
+              a dual flow-matching objective featuring decoupled timesteps and noise scales.
+              This asymmetric design allows the framework to flexibly learn the full generative
+              video trajectory while simultaneously performing efficient generative inverse
+              dynamics. Extensive experiments on both the simulated and real-world environments
+              validate our approach. DiT4DiT attains state-of-the-art performance on the
+              LIBERO and RoboCasa GR1 simulation benchmarks, achieving average success
+              rates of <b>98.6%</b> and <b>50.8%</b>, respectively, while also delivering superior results in
+              real-world tasks on the Unitree G1 robot. These results demonstrate that substituting
+              static image-text priors with the implicit physical dynamics of a generative
+              video process significantly enhances sample efficiency, convergence speed, and
+              downstream success rates, establishing video generation as a vastly superior scaling
+              proxy for policy learning.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Overview of DiT4DiT-->
+      <hr class="rounded">
+      <div class="rows">
+        <h2 class="title is-3">Overview of DiT4DiT</h2>
+        <div style="text-align: center;">
+          <img src="media/figures/pipeline.jpg" class="method-image" style="width: 85%;" />
+        </div>
+        <p class="content has-text-justified">
+          <b>DiT4DiT</b> is an end-to-end Video-Action Model with a cascaded dual-DiT architecture.
+          <b>(a)</b> The <b>Video DiT</b> (initialized from Cosmos-Predict2.5-2B) takes the current observation frames
+          and a language goal, encodes them via a causal video VAE into latent space, and models future visual dynamics
+          via flow matching. A forward hook mechanism intercepts intermediate hidden activations at a fixed flow
+          timestep from a specific transformer layer, converting the generative process into rich, physics-aware
+          visual tokens &mdash; without requiring full video reconstruction.
+          <b>(b)</b> The <b>Action DiT</b> takes the extracted visual tokens via cross-attention, along with
+          proprioceptive state embeddings and noisy action trajectories, and predicts a velocity field to generate
+          precise robot action trajectories.
+          <b>(c)</b> A <b>dual flow-matching objective</b> with a tri-timestep scheme jointly optimizes both branches
+          end-to-end, allowing the video branch to learn the full generative trajectory while the action branch
+          performs efficient generative inverse dynamics.
+        </p>
+      </div>
+
+      <!--Why Video Generation?-->
+      <hr class="rounded">
+      <div class="rows">
+        <h2 class="title is-3">Why Video Generation?</h2>
+        <p class="content has-text-justified">
+          We provide empirical evidence that <b>video generation is a vastly superior, data-efficient unsupervised
+            training objective</b> compared to semantic grounding or VLM-centric latent modeling.
+          Our study compares three proxy objectives: semantic grounding, FLARE-style latent prediction, and video
+          generation.
+          Video generation achieves <b>up to 10&times; higher data efficiency</b> and <b>7&times; faster
+            convergence</b>.
+        </p>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <p style="text-align:center;">
+              <img width="90%" src="media/figures/intro.jpg" class="method-image" />
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Simulation Results-->
+      <hr class="rounded">
+      <div class="rows">
+        <h2 class="title is-3">Simulation Results</h2>
+        <p class="content has-text-justified">
+          DiT4DiT achieves <b>state-of-the-art performance</b> on two challenging simulation benchmarks.
+        </p>
+
+        <h3 class="title is-4">LIBERO Benchmark</h3>
+        <p class="content has-text-justified">
+          DiT4DiT achieves <b>98.6% average success rate</b> across four LIBERO suites, surpassing all baselines
+          including &pi;<sub>0.5</sub> (96.9%), CogVLA (97.4%), and OpenVLA-OFT (97.1%). Particularly strong on
+          LIBERO-Long (extended horizon): <b>97.6%</b>.
+        </p>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>LIBERO-Spatial</th>
+                <th>LIBERO-Object</th>
+                <th>LIBERO-Goal</th>
+                <th>LIBERO-Long</th>
+                <th>Average</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>OpenVLA</td>
+                <td>84.7</td>
+                <td>88.4</td>
+                <td>79.2</td>
+                <td>53.7</td>
+                <td>76.5</td>
+              </tr>
+              <tr>
+                <td>CogACT</td>
+                <td>92.5</td>
+                <td>92.7</td>
+                <td>91.3</td>
+                <td>74.7</td>
+                <td>87.8</td>
+              </tr>
+              <tr>
+                <td>OpenVLA-OFT</td>
+                <td>97.8</td>
+                <td>97.8</td>
+                <td>98.0</td>
+                <td>94.8</td>
+                <td>97.1</td>
+              </tr>
+              <tr>
+                <td>&pi;<sub>0.5</sub></td>
+                <td>98.0</td>
+                <td>98.4</td>
+                <td>96.0</td>
+                <td>95.2</td>
+                <td>96.9</td>
+              </tr>
+              <tr>
+                <td>CogVLA</td>
+                <td>98.4</td>
+                <td>99.6</td>
+                <td>97.6</td>
+                <td>93.6</td>
+                <td>97.4</td>
+              </tr>
+              <tr>
+                <td>Qwen3DiT</td>
+                <td>97.0</td>
+                <td>97.2</td>
+                <td>97.8</td>
+                <td>94.2</td>
+                <td>96.6</td>
+              </tr>
+              <tr style="font-weight: bold; background-color: #fdf6e3;">
+                <td>DiT4DiT (Ours)</td>
+                <td>99.2</td>
+                <td>99.2</td>
+                <td>98.4</td>
+                <td>97.6</td>
+                <td>98.6</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="title is-4">RoboCasa-GR1 Benchmark</h3>
+        <p class="content has-text-justified">
+          DiT4DiT achieves <b>50.8% average success rate</b> across 24 tasks, surpassing GR00T-N1.5 (41.8%) by 9.0
+          points and GR00T-N1.6 (40.8%) by 10.0 points. Outperforms Qwen3DiT (36.2%) by <b>14.6% absolute</b>,
+          confirming that video-generative priors are vastly superior to static VLM priors.
+        </p>
+      </div>
+
+      <!--Real-World Experiments-->
+      <hr class="rounded">
+      <div class="rows">
+        <h2 class="title is-3">Real-World Experiments</h2>
+        <p class="content has-text-justified">
+          We evaluate DiT4DiT on seven household tasks with the <b>Unitree G1 humanoid robot</b>:
+          pick-and-place, arrange flower, stack cups, insert plate, box packaging, move spoon, and drawer interaction.
+          DiT4DiT comprehensively outperforms both GR00T-N1.5 (pre-trained with more data) and Qwen3DiT across all
+          tasks.
+        </p>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <p style="text-align:center;">
+              <img width="100%" src="media/figures/real_exp.jpg" class="method-image" />
+            </p>
+          </div>
+        </div>
+
+        <h3 class="title is-4">Real-World Task Demonstrations</h3>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <!-- TODO: Replace with actual demo video -->
+            <video id="real-task-video" controls autoplay loop muted width="100%">
+              <source src="media/videos/real_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!--Zero-Shot Generalization-->
+      <hr class="rounded">
+      <div class="rows">
+        <h2 class="title is-3">Zero-Shot Generalization</h2>
+        <p class="content has-text-justified">
+          DiT4DiT demonstrates <b>strong zero-shot generalization</b> under severe distribution shifts in both
+          simulation and real-world settings.
+        </p>
+
+        <h3 class="title is-4">Simulation Generalization</h3>
+        <p class="content has-text-justified">
+          In RoboCasa object-substitution tests, DiT4DiT achieves <b>54.5%</b> on unseen objects vs. 32.0% for
+          Qwen3DiT.
+        </p>
+
+        <h3 class="title is-4">Real-World Generalization</h3>
+        <p class="content has-text-justified">
+          Tested on category changes (unseen cups/vases), object substitution (corn instead of eggplant), and
+          quantity variation (4 cups instead of 3). DiT4DiT achieves <b>70%</b> on Arrange Flower (Category) vs. 0%
+          for Qwen3DiT and 10% for GR00T-N1.5.
+        </p>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <p style="text-align:center;">
+              <img width="100%" src="media/figures/real_task_gene_exp.png" class="method-image" />
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Generated Video Plans-->
+      <hr class="rounded">
+      <div class="rows">
+        <h2 class="title is-3">Generated Video Plans</h2>
+        <p class="content has-text-justified">
+          DiT4DiT can optionally generate full video plans showing predicted future dynamics. The video branch
+          produces realistic visual plans that demonstrate the model's understanding of physical dynamics and
+          task-relevant behaviors.
+        </p>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <p style="text-align:center;">
+              <img width="100%" src="media/figures/video_gen.jpg" class="method-image" />
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--Ablation Studies-->
+      <hr class="rounded">
+      <div class="rows">
+        <h2 class="title is-3">Ablation Studies</h2>
+        <p class="content has-text-justified">
+          We conduct thorough ablation studies to validate each design choice in DiT4DiT.
+        </p>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <p style="text-align:center;">
+              <img width="100%" src="media/figures/ablation.jpg" class="method-image" />
+            </p>
+          </div>
+        </div>
+        <p class="content has-text-justified">
+          <b>(a) Feature extraction layer:</b> Layer 18 (out of 28) is optimal; early layers lack actionable
+          semantics, final layers over-specialize for pixel reconstruction.
+          <b>(b) Denoising steps:</b> A single forward step yields the best results; more steps degrade performance
+          by over-committing to pixel-level reconstruction details.
+          <b>(c) Joint vs. decoupled training:</b> t-SNE visualization shows joint training produces smooth,
+          structured temporal trajectories in the latent space, while decoupled training produces fragmented,
+          entangled distributions.
+        </p>
+      </div>
+
+      <!--Model Efficiency-->
+      <hr class="rounded">
+      <div class="rows">
+        <h2 class="title is-3">Model Efficiency</h2>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable" style="margin: 0 auto; width: auto;">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Trainable Params</th>
+                <th>Deployment Freq.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GR00T-N1.5</td>
+                <td>2.7B</td>
+                <td>13 Hz</td>
+              </tr>
+              <tr>
+                <td>Qwen3DiT</td>
+                <td>2.3B</td>
+                <td>9 Hz</td>
+              </tr>
+              <tr style="font-weight: bold; background-color: #fdf6e3;">
+                <td>DiT4DiT (Ours)</td>
+                <td>2.2B</td>
+                <td>6 Hz</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="content has-text-justified">
+          DiT4DiT is the most parameter-efficient model. While the 6 Hz deployment frequency is lower than
+          alternatives, it is sufficient for real-time closed-loop control, and the superior action quality
+          more than compensates for the lower frequency.
+        </p>
+      </div>
+
+      <!--BibTeX-->
+      <hr class="rounded">
+      <h2 class="title is-3">BibTeX</h2>
+      <p class="bibtex">
+        @article{ma2025dit4dit, <br>
+        &nbsp;&nbsp;title={DiT4DiT: Unleashing the Potential of Video Generation for Generalizable Robot Control},
+        <br>
+        &nbsp;&nbsp;author={Ma, Teli and Zheng, Jia and Wang, Zifan and Gao, Ziyao and Zhou, Jiaming and Liang,
+        Junwei}, <br>
+        &nbsp;&nbsp;journal={arXiv preprint arXiv:XXXX.XXXXX}, <br>
+        &nbsp;&nbsp;year={2025} <br>
+        }
+      </p>
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content has-text-centered">
+            <p>
+              Website template borrowed from <a href="https://rekep-robot.github.io/">ReKep</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>
