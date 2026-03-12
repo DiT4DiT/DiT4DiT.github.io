@@ -191,7 +191,7 @@ body {
   color: #53565A;
   font-family: 'Google Sans', sans-serif;
   border-radius: 0.5em;
-  width: 6em;
+  padding: 0 1em;
   height: 2.2em;
   margin-left: 0.4em;
   margin-right: 0.4em;
