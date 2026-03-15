@@ -48,7 +48,8 @@
       <div class="container is-fullhd">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title" style="color: orange;">DiT4DiT: Jointly Modeling Video Dynamics and Actions <br> for
+            <h1 class="title is-1 publication-title" style="color: orange;">DiT4DiT: Jointly Modeling Video Dynamics and
+              Actions <br> for
               Generalizable Robot Control</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
@@ -89,8 +90,10 @@
             </div>
             <div class="button-container">
               <!-- TODO: Update links when available -->
-              <a href="https://my.feishu.cn/wiki/G8BMwxbfmiBLlYkc58KcIF76nxb?from=from_copylink" target="_blank" class="button"><i class="fa-light fa-file-pdf"></i>&emsp14;Paper</a>
-              <a href="https://arxiv.org/abs/2603.10448" target="_blank" class="button"><i class="ai ai-arxiv"></i>&emsp14;arXiv</a>
+              <a href="https://my.feishu.cn/wiki/G8BMwxbfmiBLlYkc58KcIF76nxb?from=from_copylink" target="_blank"
+                class="button"><i class="fa-light fa-file-pdf"></i>&emsp14;Paper</a>
+              <a href="https://arxiv.org/abs/2603.10448" target="_blank" class="button"><i
+                  class="ai ai-arxiv"></i>&emsp14;arXiv</a>
               <a href="#" target="_blank" class="button"><i class="fa-light fa-code"></i>&emsp14;Code (Coming Soon)</a>
             </div>
           </div>
@@ -276,7 +279,7 @@
           points and GR00T-N1.6 (40.8%) by 10.0 points. Outperforms Qwen3DiT (36.2%) by <b>14.6% absolute</b>,
           confirming that video-generative priors are vastly superior to static VLM priors.
         </p>
-        <div class="table-container" style="transform: scale(0.8); transform-origin: top center; margin-bottom: -17%;">
+        <div class="table-container" style="transform: scale(0.8); transform-origin: top center; margin-bottom: -13%;">
           <table class="table is-bordered is-striped is-hoverable is-fullwidth">
             <thead>
               <tr>
@@ -478,7 +481,7 @@
           DiT4DiT comprehensively outperforms both GR00T-N1.5 (pre-trained with more data) and Qwen3DiT across all
           tasks.
         </p>
-        
+
         <div class="columns">
           <div class="column has-text-centered">
             <p style="text-align:center;">
@@ -487,121 +490,128 @@
           </div>
         </div>
 
-        <div style="transform: scale(0.8); transform-origin: top center; margin-bottom: -17%;">
-        <!-- Row 1: 2 videos -->
-        <div class="columns">
-          <div class="column is-half has-text-centered">
-            <video controls autoplay loop muted playsinline width="100%">
-              <source src="media/videos/packing.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Box Packing (1x speed)</p>
+        <div style="transform: scale(0.8); transform-origin: top center; margin-bottom: -13%;">
+          <!-- Row 1: 2 videos -->
+          <div class="columns" style="align-items: flex-end;">
+            <div class="column is-half has-text-centered">
+              <video controls autoplay loop muted playsinline width="100%" style="aspect-ratio: 960/372;">
+                <source src="media/videos/packing.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Box Packing
+                (1x speed)</p>
+            </div>
+            <div class="column is-half has-text-centered">
+              <video controls autoplay loop muted playsinline width="100%" style="aspect-ratio: 960/372;">
+                <source src="media/videos/drawer.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Drawer
+                Interaction (1x speed)</p>
+            </div>
           </div>
-          <div class="column is-half has-text-centered">
-            <video controls autoplay loop muted playsinline width="100%">
-              <source src="media/videos/drawer.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Drawer Interaction (1x speed)</p>
+
+          <!-- Row 2: 2 videos -->
+          <div class="columns" style="align-items: flex-end;">
+            <div class="column is-half has-text-centered">
+              <video controls autoplay loop muted playsinline width="100%" style="aspect-ratio: 960/376;">
+                <source src="media/videos/cups.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Stack up the
+                Cups (1x speed)</p>
+            </div>
+            <div class="column is-half has-text-centered">
+              <video controls autoplay loop muted playsinline width="100%" style="aspect-ratio: 960/376;">
+                <source src="media/videos/plate.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Insert Plate
+                into the Rack (1x speed)</p>
+            </div>
+          </div>
+
+          <!-- Row 3: 3 videos -->
+          <div class="columns" style="align-items: flex-end;">
+            <div class="column is-one-third has-text-centered">
+              <video controls autoplay loop muted playsinline width="100%" style="aspect-ratio: 960/380;">
+                <source src="media/videos/eggplant.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Pick and
+                Place (1x speed)</p>
+            </div>
+            <div class="column is-one-third has-text-centered">
+              <video controls autoplay loop muted playsinline width="100%" style="aspect-ratio: 960/380;">
+                <source src="media/videos/flower.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Arrange the
+                Flower (1x speed)</p>
+            </div>
+            <div class="column is-one-third has-text-centered">
+              <video controls autoplay loop muted playsinline width="100%" style="aspect-ratio: 960/380;">
+                <source src="media/videos/spoon.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Move the
+                Spoon (1x speed)</p>
+            </div>
           </div>
         </div>
 
-        <!-- Row 2: 2 videos -->
-        <div class="columns">
-          <div class="column is-half has-text-centered">
-            <video controls autoplay loop muted playsinline width="100%">
-              <source src="media/videos/cups.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Stack up the Cups (1x speed)</p>
+
+        <!--Zero-Shot Generalization-->
+        <hr class="rounded">
+        <div class="rows">
+          <h2 class="title is-3">Zero-Shot Generalization</h2>
+          <p class="content has-text-justified">
+            DiT4DiT demonstrates <b>strong zero-shot generalization</b> under severe distribution shifts in both
+            simulation and real-world settings.
+          </p>
+
+          <div class="columns">
+            <div class="column has-text-centered">
+              <p style="text-align:center;">
+                <img width="80%" src="media/figures/task_gene.jpg" class="method-image" />
+              </p>
+            </div>
           </div>
-          <div class="column is-half has-text-centered">
-            <video controls autoplay loop muted playsinline width="100%">
-              <source src="media/videos/plate.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Insert Plate into the Rack (1x speed)</p>
+
+          <h3 class="title is-4">Simulation Generalization</h3>
+          <p class="content has-text-justified">
+            In RoboCasa object-substitution tests, DiT4DiT achieves <b>54.5%</b> on unseen objects vs. 32.0% for
+            Qwen3DiT.
+          </p>
+
+          <h3 class="title is-4">Real-World Generalization</h3>
+          <p class="content has-text-justified">
+            Tested on category changes (unseen cups/vases), object substitution (corn instead of eggplant), and
+            quantity variation (4 cups instead of 3). DiT4DiT achieves <b>70%</b> on Arrange Flower (Category) vs. 0%
+            for Qwen3DiT and 10% for GR00T-N1.5.
+          </p>
+          <div class="columns">
+            <div class="column has-text-centered">
+              <p style="text-align:center;">
+                <img width="80%" src="media/figures/real_task_gene_exp.png" class="method-image" />
+              </p>
+            </div>
           </div>
         </div>
 
-        <!-- Row 3: 3 videos -->
-        <div class="columns">
-          <div class="column is-one-third has-text-centered">
-            <video controls autoplay loop muted playsinline width="100%">
-              <source src="media/videos/eggplant.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Pick and Place (1x speed)</p>
-          </div>
-          <div class="column is-one-third has-text-centered">
-            <video controls autoplay loop muted playsinline width="100%">
-              <source src="media/videos/flower.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Arrange the Flower (1x speed)</p>
-          </div>
-          <div class="column is-one-third has-text-centered">
-            <video controls autoplay loop muted playsinline width="100%">
-              <source src="media/videos/spoon.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 0.5rem; font-weight: bold; font-size: 1.1em;">Move the Spoon (1x speed)</p>
-          </div>
-        </div>
-        </div>
-      </div>
-
-      <!--Zero-Shot Generalization-->
-      <hr class="rounded">
-      <div class="rows">
-        <h2 class="title is-3">Zero-Shot Generalization</h2>
-        <p class="content has-text-justified">
-          DiT4DiT demonstrates <b>strong zero-shot generalization</b> under severe distribution shifts in both
-          simulation and real-world settings.
-        </p>
-
-        <div class="columns">
-          <div class="column has-text-centered">
-            <p style="text-align:center;">
-              <img width="80%" src="media/figures/task_gene.jpg" class="method-image" />
-            </p>
+        <!--Generated Video Plans-->
+        <hr class="rounded">
+        <div class="rows">
+          <h2 class="title is-3">Generated Video Plans</h2>
+          <p class="content has-text-justified">
+            DiT4DiT can optionally generate full video plans showing predicted future dynamics. The video branch
+            produces realistic visual plans that demonstrate the model's understanding of physical dynamics and
+            task-relevant behaviors.
+          </p>
+          <div class="columns">
+            <div class="column has-text-centered">
+              <p style="text-align:center;">
+                <img width="80%" src="media/figures/video_gen.jpg" class="method-image" />
+              </p>
+            </div>
           </div>
         </div>
 
-        <h3 class="title is-4">Simulation Generalization</h3>
-        <p class="content has-text-justified">
-          In RoboCasa object-substitution tests, DiT4DiT achieves <b>54.5%</b> on unseen objects vs. 32.0% for
-          Qwen3DiT.
-        </p>
-
-        <h3 class="title is-4">Real-World Generalization</h3>
-        <p class="content has-text-justified">
-          Tested on category changes (unseen cups/vases), object substitution (corn instead of eggplant), and
-          quantity variation (4 cups instead of 3). DiT4DiT achieves <b>70%</b> on Arrange Flower (Category) vs. 0%
-          for Qwen3DiT and 10% for GR00T-N1.5.
-        </p>
-        <div class="columns">
-          <div class="column has-text-centered">
-            <p style="text-align:center;">
-              <img width="80%" src="media/figures/real_task_gene_exp.png" class="method-image" />
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!--Generated Video Plans-->
-      <hr class="rounded">
-      <div class="rows">
-        <h2 class="title is-3">Generated Video Plans</h2>
-        <p class="content has-text-justified">
-          DiT4DiT can optionally generate full video plans showing predicted future dynamics. The video branch
-          produces realistic visual plans that demonstrate the model's understanding of physical dynamics and
-          task-relevant behaviors.
-        </p>
-        <div class="columns">
-          <div class="column has-text-centered">
-            <p style="text-align:center;">
-              <img width="80%" src="media/figures/video_gen.jpg" class="method-image" />
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!--Ablation Studies-->
-      <!-- <hr class="rounded">
+        <!--Ablation Studies-->
+        <!-- <hr class="rounded">
       <div class="rows">
         <h2 class="title is-3">Ablation Studies</h2>
         <p class="content has-text-justified">
@@ -625,47 +635,47 @@
         </p>
       </div> -->
 
-      <!--Model Efficiency-->
-      <hr class="rounded">
-      <div class="rows">
-        <h2 class="title is-3">Model Efficiency</h2>
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-hoverable" style="margin: 0 auto; width: auto;">
-            <thead>
-              <tr>
-                <th>Model</th>
-                <th>Trainable Params</th>
-                <th>Deployment Freq.</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>GR00T-N1.5</td>
-                <td>2.7B</td>
-                <td>13 Hz</td>
-              </tr>
-              <tr>
-                <td>Qwen3DiT</td>
-                <td>2.3B</td>
-                <td>9 Hz</td>
-              </tr>
-              <tr style="font-weight: bold; background-color: #fdf6e3;">
-                <td>DiT4DiT (Ours)</td>
-                <td>2.2B</td>
-                <td>6 Hz</td>
-              </tr>
-            </tbody>
-          </table>
+        <!--Model Efficiency-->
+        <hr class="rounded">
+        <div class="rows">
+          <h2 class="title is-3">Model Efficiency</h2>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-hoverable" style="margin: 0 auto; width: auto;">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Trainable Params</th>
+                  <th>Deployment Freq.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>GR00T-N1.5</td>
+                  <td>2.7B</td>
+                  <td>13 Hz</td>
+                </tr>
+                <tr>
+                  <td>Qwen3DiT</td>
+                  <td>2.3B</td>
+                  <td>9 Hz</td>
+                </tr>
+                <tr style="font-weight: bold; background-color: #fdf6e3;">
+                  <td>DiT4DiT (Ours)</td>
+                  <td>2.2B</td>
+                  <td>6 Hz</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="content has-text-justified">
+            DiT4DiT is the most parameter-efficient model. While the 6 Hz deployment frequency is lower than
+            alternatives, it is sufficient for real-time closed-loop control, and the superior action quality
+            more than compensates for the lower frequency.
+          </p>
         </div>
-        <p class="content has-text-justified">
-          DiT4DiT is the most parameter-efficient model. While the 6 Hz deployment frequency is lower than
-          alternatives, it is sufficient for real-time closed-loop control, and the superior action quality
-          more than compensates for the lower frequency.
-        </p>
-      </div>
 
-      <!--BibTeX-->
-      <!-- <hr class="rounded">
+        <!--BibTeX-->
+        <!-- <hr class="rounded">
       <h2 class="title is-3">BibTeX</h2>
       <p class="bibtex">
         @article{ma2025dit4dit, <br>
@@ -677,7 +687,7 @@
         &nbsp;&nbsp;year={2025} <br>
         }
       </p> -->
-    </div>
+      </div>
 
   </section>
 
