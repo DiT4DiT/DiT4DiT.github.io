@@ -100,6 +100,12 @@
             </video>
             <p class="videoLabel">Relocate Chair (1x speed)</p>
           </div>
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/assembly_work.mp4" type="video/mp4">
+            </video>
+            <p class="videoLabel">Assembly Work (1x speed)</p>
+          </div>
         </div>
       </div>
 
@@ -187,7 +193,7 @@
       <!-- Overview of DiT4DiT -->
       <h2>Method</h2>
       <div class="imageWrapper">
-        <img src="media/figures/pipeline.jpg" style="width: 90%;" alt="DiT4DiT pipeline overview">
+        <img src="media/figures/pipeline1.png" style="width: 100%;" alt="DiT4DiT pipeline overview">
       </div>
       <p>
         <b>DiT4DiT is an end-to-end Video-Action Model with a cascaded dual-DiT architecture.</b>
@@ -204,12 +210,12 @@
         performs efficient generative inverse dynamics.
       </p>
 
-      <div class="imageWrapper">
+      <!-- <div class="imageWrapper">
         <img src="media/figures/tri_timestep.png" style="width: 90%;" alt="Tri-timestep mechanism">
       </div>
       <p>
         <b>Asymmetric tri-timestep design.</b> We decouple the diffusion timesteps to optimize joint video-action generation. The video module uses uniform sampling $\tau_v$ to capture the full denoising trajectory, while the action module uses Beta sampling $\tau_a$ to focus on critical control phases. Meanwhile, stable visual conditions are extracted at a fixed deterministic timestep $\tau_f$ from the evolving hidden states $h_t^1 \rightarrow h_t^0$.
-      </p>
+      </p> -->
 
       <!-- Why Video Generation? -->
       <!-- <h2>Why Video Generation?</h2>
@@ -312,8 +318,8 @@
 
       <h3>RoboCasa-GR1 Benchmark</h3>
       <p>
-        DiT4DiT achieves <b>50.8% average success rate</b> across 24 tasks, surpassing GR00T-N1.5 (41.8%) by 9.0
-        points and GR00T-N1.6 (40.8%) by 10.0 points. Outperforms Qwen3DiT (36.2%) by <b>14.6% absolute</b>,
+        DiT4DiT achieves <b>56.7% average success rate</b> across 24 tasks, surpassing GR00T-N1.6 (47.8%) by 8.9
+        points,
         confirming that video-generative priors are vastly superior to static VLM priors.
       </p>
       <!-- <div class="table-container">
@@ -510,14 +516,14 @@
       <!-- Real-World Results -->
       <h2>Real-World Results</h2>
       <p>
-        We evaluate DiT4DiT on seven household tasks with the <b>Unitree G1 humanoid robot</b>:
-        <i>pick-and-place</i>, <i>arrange flower</i>, <i>stack cups</i>, <i>insert plate</i>, <i>box packaging</i>, <i>move spoon</i>, and <i>drawer interaction</i>.
+        We evaluate DiT4DiT on eight household tasks with the <b>Unitree G1 humanoid robot</b>:
+        <i>pick-and-place</i>, <i>arrange flower</i>, <i>stack cups</i>, <i>insert plate</i>, <i>box packaging</i>, <i>move spoon</i>, <i>drawer interaction</i>, and <i>twist cap</i>, and three Whole-body loco-manipulation tasks: <i>shelf organization</i>, <i>relocate chair</i>, and <i>assembly line work</i>.
         DiT4DiT comprehensively outperforms both GR00T-N1.5 (pre-trained with more data) and Qwen3DiT across all
         tasks.
       </p>
 
       <div class="imageWrapper">
-        <img src="media/figures/real_task_res.jpg" style="width: 85%;" alt="Real-world task results">
+        <img src="media/figures/real_task_res1.png" style="width: 100%;" alt="Real-world task results">
       </div>
 
 
@@ -528,24 +534,24 @@
         simulation and real-world settings.
       </p>
 
-      <div class="imageWrapper">
+      <!-- <div class="imageWrapper">
         <img src="media/figures/task_gene.jpg" style="width: 85%;" alt="Zero-shot generalization tasks">
-      </div>
+      </div> -->
 
-      <h3>Simulation Generalization</h3>
+      <!-- <h3>Simulation Generalization</h3>
       <p>
         In RoboCasa object-substitution tests, DiT4DiT achieves <b>54.5%</b> on unseen objects vs. 32.0% for
         Qwen3DiT.
-      </p>
+      </p> -->
 
-      <h3>Real-World Generalization</h3>
+      <!-- <h3>Real-World Generalization</h3> -->
       <p>
         Tested on category changes (unseen cups/vases), object substitution (corn instead of eggplant), and
         quantity variation (4 cups instead of 3). DiT4DiT achieves <b>70%</b> on Arrange Flower (Category) vs. 0%
         for Qwen3DiT and 10% for GR00T-N1.5.
       </p>
       <div class="imageWrapper">
-        <img src="media/figures/real_task_gene_exp.png" style="width: 100%;" alt="Real-world generalization experiments">
+        <img src="media/figures/real_task_gene_exp1.png" style="width: 100%;" alt="Real-world generalization experiments">
       </div>
 
       <!-- Generated Video Plans -->
@@ -573,17 +579,32 @@
           <tbody>
             <tr>
               <td>GR00T-N1.5</td>
-              <td>2.7B</td>
+              <td>2.7 B</td>
               <td>13 Hz</td>
             </tr>
             <tr>
               <td>Qwen3DiT</td>
-              <td>2.3B</td>
+              <td>2.3 B</td>
               <td>9 Hz</td>
+            </tr>
+            <tr>
+              <td>mimic-video</td>
+              <td>2.5 B</td>
+              <td>1.9 Hz</td>
+            </tr>
+            <tr>
+              <td>Motus</td>
+              <td>5.9 B</td>
+              <td>0.5 Hz</td>
+            </tr>
+            <tr>
+              <td>Cosmos Policy</td>
+              <td>2.0 B</td>
+              <td>0.7 Hz</td>
             </tr>
             <tr style="font-weight: bold; background-color: #fdf6e3;">
               <td>DiT4DiT (Ours)</td>
-              <td>2.2B</td>
+              <td>2.2 B</td>
               <td>6 Hz</td>
             </tr>
           </tbody>
@@ -592,7 +613,7 @@
       <p>
         DiT4DiT is the most parameter-efficient model. While the 6 Hz deployment frequency is lower than
         alternatives, it is sufficient for real-time closed-loop control, and the superior action quality
-        more than compensates for the lower frequency.
+        more than compensates for the lower frequency. All speed are reported based on a single A100.
       </p>
 
       <!-- Citation -->
