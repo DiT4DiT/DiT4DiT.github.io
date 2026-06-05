@@ -54,6 +54,123 @@ a:hover {
   padding: 0 24px;
 }
 
+/* ---------- Hero Video Cover ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px;
+}
+
+.hero-cine {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  color: #fff;
+  padding: 90px 20px 70px;
+}
+
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(70% 55% at 50% 50%, rgba(8,10,18,0.55) 0%, rgba(8,10,18,0.25) 70%, rgba(8,10,18,0.1) 100%),
+    linear-gradient(180deg, rgba(8,10,18,0.35) 0%, rgba(8,10,18,0.0) 30%, rgba(8,10,18,0.0) 70%, rgba(8,10,18,0.40) 100%);
+}
+
+.hero-cine-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 940px;
+  animation: heroFade 0.9s ease both;
+}
+
+@keyframes heroFade {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-cine .paper-title {
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.50);
+  font-size: clamp(2.2em, 5vw, 4.5em);
+  font-weight: 800;
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+
+.hero-cine .paper-title .projectName {
+  color: #fff;
+}
+
+.hero-cine .title-sub {
+  color: rgba(255,255,255,0.88);
+  font-size: 0.42em;
+  font-weight: 600;
+  display: block;
+  margin-top: 12px;
+  line-height: 1.35;
+}
+
+.muted-light {
+  color: rgba(255,255,255,0.78);
+}
+
+.hero-tagline {
+  margin: 22px auto 0;
+  max-width: 640px;
+  font-size: 1.15em;
+  font-weight: 400;
+}
+
+/* Scroll cue animation */
+.scroll-cue {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 26px;
+  height: 42px;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.3s ease;
+}
+
+.scroll-cue:hover {
+  border-color: rgba(255,255,255,0.9);
+}
+
+.scroll-cue-dot {
+  width: 4px;
+  height: 8px;
+  margin-top: 7px;
+  background: #fff;
+  border-radius: 999px;
+  animation: scrollBounce 2s infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
 /* ---------- Title area ---------- */
 .blogTitle {
   text-align: center;
@@ -260,7 +377,7 @@ a:hover {
 }
 
 .videoGrid.cols-1 {
-  max-width: 80%;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -272,8 +389,6 @@ a:hover {
   width: 100%;
   border-radius: 6px;
   display: block;
-  object-fit: cover;
-  aspect-ratio: 960 / 376;
 }
 
 .videoCell .videoLabel {
@@ -373,5 +488,22 @@ hr.rounded {
   .linkContainer {
     flex-direction: column;
     align-items: center;
+  }
+
+  .hero-cine {
+    min-height: 75vh;
+    padding: 60px 20px 50px;
+  }
+
+  .hero-cine .paper-title {
+    font-size: 2em;
+  }
+
+  .hero-tagline {
+    font-size: 1em;
+  }
+
+  .scroll-cue {
+    bottom: 18px;
   }
 }

@@ -45,8 +45,27 @@
 <body>
   <article class="blogPost">
 
+    <!-- ===== Hero Video Cover ===== -->
+    <header class="hero-cine">
+      <video class="hero-bg-video" autoplay muted loop playsinline>
+        <source src="media/videos/dit4dit+sonic.mp4" type="video/mp4">
+      </video>
+      <div class="hero-bg-overlay"></div>
+
+      <div class="hero-cine-inner">
+        <h1 class="paper-title"><span class="projectName">DiT4DiT</span><br>
+          <span class="title-sub">Jointly Modeling Video Dynamics and Actions for Generalizable Robot Control</span>
+        </h1>
+        <p class="hero-tagline muted-light">Unifying video generation and robot control through diffusion transformers</p>
+      </div>
+
+      <a href="#content" class="scroll-cue" aria-label="Scroll down">
+        <span class="scroll-cue-dot"></span>
+      </a>
+    </header>
+
     <!-- ===== Title ===== -->
-    <div class="center blogTitle">
+    <div id="content" class="center blogTitle">
       <h1 class="dreamTitle"><span class="projectName">DiT4DiT</span></h1>
       <p class="subtitleText">Jointly Modeling Video Dynamics and Actions for Generalizable Robot Control</p>
     </div>
@@ -85,7 +104,19 @@
     <!-- ===== Content ===== -->
     <div class="blogContent">
 
-      <h2>Whole-body Control</h2>
+      <h2>Whole-body Control (+Sonic)</h2>
+      <div class="videoContainer">
+        <div class="videoGrid cols-1">
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/dit4dit+sonic.mp4" type="video/mp4">
+            </video>
+            <p class="videoLabel">9 tasks (1x speed)</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Whole-body Control (+Decoupled WBC)</h2>
       <div class="videoContainer">
         <div class="videoGrid cols-1">
           <div class="videoCell">
