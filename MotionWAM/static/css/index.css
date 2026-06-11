@@ -1,0 +1,509 @@
+/* ============================================================
+   DiT4DiT — DreamDojo-inspired stylesheet
+   ============================================================ */
+
+/* ---------- CSS variables ---------- */
+:root {
+  --accent: #f59a23;
+  --accent-hover: #e08a15;
+  --accent-light: rgba(245, 154, 35, 0.08);
+  --text-primary: #1f1f1f;
+  --text-body: #333333;
+  --text-secondary: #555555;
+  --text-muted: #666666;
+  --bg: #ffffff;
+  --bg-code: #f6f8fa;
+  --border: #e0e0e0;
+  --max-width: 960px;
+  --font-sans: 'Geist', 'NVIDIA Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Computer Modern Serif', serif;
+  --font-mono: 'Courier New', Courier, monospace;
+}
+
+/* ---------- Reset / base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: var(--bg);
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Layout ---------- */
+.blogPost {
+  width: 100%;
+}
+
+.center {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Hero Video Cover ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px;
+}
+
+.hero-cine {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  color: #fff;
+  padding: 90px 20px 70px;
+}
+
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(70% 55% at 50% 50%, rgba(8,10,18,0.55) 0%, rgba(8,10,18,0.25) 70%, rgba(8,10,18,0.1) 100%),
+    linear-gradient(180deg, rgba(8,10,18,0.35) 0%, rgba(8,10,18,0.0) 30%, rgba(8,10,18,0.0) 70%, rgba(8,10,18,0.40) 100%);
+}
+
+.hero-cine-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 940px;
+  animation: heroFade 0.9s ease both;
+}
+
+@keyframes heroFade {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-cine .paper-title {
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.50);
+  font-size: clamp(2.2em, 5vw, 4.5em);
+  font-weight: 800;
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+
+.hero-cine .paper-title .projectName {
+  color: #fff;
+}
+
+.hero-cine .title-sub {
+  color: rgba(255,255,255,0.88);
+  font-size: 0.42em;
+  font-weight: 600;
+  display: block;
+  margin-top: 12px;
+  line-height: 1.35;
+}
+
+.muted-light {
+  color: rgba(255,255,255,0.78);
+}
+
+.hero-tagline {
+  margin: 22px auto 0;
+  max-width: 640px;
+  font-size: 1.15em;
+  font-weight: 400;
+}
+
+/* Scroll cue animation */
+.scroll-cue {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 26px;
+  height: 42px;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.3s ease;
+}
+
+.scroll-cue:hover {
+  border-color: rgba(255,255,255,0.9);
+}
+
+.scroll-cue-dot {
+  width: 4px;
+  height: 8px;
+  margin-top: 7px;
+  background: #fff;
+  border-radius: 999px;
+  animation: scrollBounce 2s infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+/* ---------- Title area ---------- */
+.blogTitle {
+  text-align: center;
+  padding: 60px 0 10px;
+}
+
+.dreamTitle {
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+.dreamTitle .projectName {
+  font-size: 4rem;
+  font-weight: 800;
+  color: orange;
+}
+
+.subtitleText {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ---------- Authors ---------- */
+.authors {
+  text-align: center;
+  padding: 18px 0 0;
+}
+
+.authorList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1.08rem;
+  line-height: 1.2;
+}
+
+.authorName {
+  white-space: nowrap;
+}
+
+.authorName sup {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.7em;
+  margin-left: 1px;
+  line-height: 0;
+}
+
+.authorLink {
+  color: var(--text-primary) !important;
+  text-decoration: none;
+}
+.authorLink:hover {
+  text-decoration: underline;
+  color: var(--accent) !important;
+}
+
+/* ---------- Affiliations ---------- */
+.affiliationContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 24px;
+  margin: 14px 0 4px;
+  font-size: 0.97rem;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.affiliationContainer sup {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.75em;
+}
+
+.affiliationNote {
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin: 4px 0 0;
+}
+
+.affiliationNote sup {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- Action buttons ---------- */
+.linkContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 24px 0 10px;
+}
+
+.borderedLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 22px;
+  border-radius: 6px;
+  font-size: 0.97rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  line-height: 1;
+  background: var(--accent);
+  color: #fff !important;
+  border: 2px solid var(--accent);
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+.borderedLink:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  text-decoration: none !important;
+}
+
+.borderedLink i,
+.borderedLink .ai {
+  font-size: 1.1em;
+}
+
+/* ---------- Blog content ---------- */
+.blogContent {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 10px 24px 60px;
+  font-size: 1.1rem;
+}
+
+.blogContent h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  display: table;
+  margin: 2.5rem auto 1rem auto;
+  padding-bottom: 0.5rem;
+  border-bottom: 4px solid var(--accent);
+  text-align: center;
+}
+
+.blogContent h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 20px 0 8px;
+}
+
+.blogContent p {
+  color: var(--text-body);
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* ---------- Images ---------- */
+.imageWrapper {
+  text-align: center;
+  margin: 24px 0;
+}
+
+.imageWrapper img {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+.caption {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  text-align: center;
+}
+
+.method-image {
+  border-radius: 6px;
+}
+
+/* ---------- Video ---------- */
+.videoContainer {
+  margin: 24px 0;
+}
+
+.videoGrid {
+  display: grid;
+  gap: 16px;
+  align-items: end;
+}
+
+.videoGrid.cols-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.videoGrid.cols-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.videoGrid.cols-1 {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.videoCell {
+  text-align: center;
+}
+
+.videoCell video {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+}
+
+.videoCell .videoLabel {
+  margin-top: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* ---------- Tables ---------- */
+.table-container {
+  overflow-x: auto;
+  margin: 20px 0 24px;
+}
+
+.table {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  padding: 8px 12px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.table th {
+  background-color: #f5f5f5;
+  font-weight: 700;
+}
+
+.table tbody tr:hover {
+  background-color: var(--accent-light);
+}
+
+/* Keep Bulma .is-bordered / .is-striped overrides minimal */
+.table.is-striped tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.table.is-striped tbody tr:hover {
+  background-color: var(--accent-light);
+}
+
+/* ---------- Bibtex ---------- */
+.bibtex {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-primary);
+  background-color: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 16px 0 40px;
+  line-height: 1.2;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* ---------- Divider ---------- */
+hr.rounded {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 36px 0;
+}
+
+/* ---------- Footer ---------- */
+.siteFooter {
+  text-align: center;
+  padding: 32px 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .dreamTitle {
+    font-size: 2rem;
+  }
+
+  .blogContent h2 {
+    font-size: 1.35rem;
+  }
+
+  .videoGrid.cols-2,
+  .videoGrid.cols-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .linkContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-cine {
+    min-height: 75vh;
+    padding: 60px 20px 50px;
+  }
+
+  .hero-cine .paper-title {
+    font-size: 2em;
+  }
+
+  .hero-tagline {
+    font-size: 1em;
+  }
+
+  .scroll-cue {
+    bottom: 18px;
+  }
+}

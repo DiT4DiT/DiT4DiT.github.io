@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="MotionWAM: Towards Foundation World Action Models for Real-Time Humanoid Loco-Manipulation">
+  <meta name="keywords"
+    content="World Action Model, Humanoid Loco-Manipulation, Diffusion Transformer, Video World Model, Whole-Body Control, Unitree G1, Robotics, Flow Matching">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MotionWAM | Towards Foundation World Action Models for Real-Time Humanoid Loco-Manipulation</title>
+
+  <!-- Thumbnail for social media sharing -->
+  <meta property="og:image" content="media/figures/arch.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="media/figures/arch.png" type="image/png">
+
+  <!-- Fonts: Geist (Google) + Computer Modern Serif (local) -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/fonts/cmun.css">
+
+  <!-- Keep Bulma for table utility classes -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <!-- DreamDojo-style overrides (loaded last) -->
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/fontawesome/css/fontawesome.css">
+  <link rel="stylesheet" href="static/fontawesome/css/brands.css">
+  <link rel="stylesheet" href="static/fontawesome/css/light.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+
+  <!-- MathJax for LaTeX rendering -->
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+
+<body>
+  <article class="blogPost">
+
+    <!-- ===== Hero Video Cover ===== -->
+    <!--
+    <header class="hero-cine">
+      <video class="hero-bg-video" autoplay muted loop playsinline>
+        <source src="media/videos/teaser.mp4" type="video/mp4">
+      </video>
+      <div class="hero-bg-overlay"></div>
+
+      <div class="hero-cine-inner">
+        <h1 class="paper-title"><span class="projectName">MotionWAM</span><br>
+          <span class="title-sub">Towards Foundation World Action Models for Real-Time Humanoid Loco-Manipulation</span>
+        </h1>
+        <p class="hero-tagline muted-light">A real-time World Action Model that drives whole-body humanoid loco-manipulation from a single egocentric camera</p>
+      </div>
+
+      <a href="#content" class="scroll-cue" aria-label="Scroll down">
+        <span class="scroll-cue-dot"></span>
+      </a>
+    </header>
+    -->
+
+
+    <!-- ===== Title ===== -->
+    <div id="content" class="center blogTitle">
+      <h1 class="dreamTitle"><span class="projectName">MotionWAM</span></h1>
+      <p class="subtitleText">Towards Foundation World Action Models for Real-Time Humanoid Loco-Manipulation</p>
+    </div>
+
+    <!-- ===== Authors ===== -->
+    <div class="center authors">
+      <div class="authorList">
+        <span class="authorName"><a class="authorLink" href="https://jiaazheng.github.io/" target="_blank">Jia Zheng</a><sup>1,2,&dagger;</sup></span>
+        <span class="authorName"><a class="authorLink" href="https://teleema.github.io/" target="_blank">Teli Ma</a><sup>1,2,&dagger;</sup></span>
+        <span class="authorName"><a class="authorLink">Yudong Fan</a><sup>1</sup></span>
+        <span class="authorName"><a class="authorLink" href="https://scholar.google.com/citations?user=GaJXZ-UAAAAJ&hl=en" target="_blank">Zifan Wang</a><sup>1,2</sup></span>
+        <span class="authorName"><a class="authorLink" href="https://shuoyangrobotics.github.io/" target="_blank">Shuo Yang</a><sup>1,*</sup></span>
+        <span class="authorName"><a class="authorLink" href="https://junweiliang.me/index.html" target="_blank">Junwei Liang</a><sup>2,3,*</sup></span>
+      </div>
+
+      <!-- Affiliations -->
+      <div class="affiliationContainer">
+        <span><sup>1</sup>Mondo Robotics</span>
+        <span><sup>2</sup>HKUST(GZ)</span>
+        <span><sup>3</sup>HKUST</span>
+      </div>
+      <p class="affiliationNote"><sup>&dagger;</sup>Equal contribution. <sup>*</sup>Corresponding author, Co-advising.</p>
+    </div>
+
+    <!-- ===== Action buttons ===== -->
+    <div class="center">
+      <div class="linkContainer">
+        <a class="borderedLink" href="#" target="_blank"><i class="fa-light fa-file-pdf"></i> Paper</a>
+        <a class="borderedLink" href="#" target="_blank"><i class="ai ai-arxiv"></i> arXiv</a>
+        <a class="borderedLink" href="#" target="_blank"><i class="fa-light fa-code"></i> Code</a>
+        <a class="borderedLink" href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i> Thread</a>
+      </div>
+    </div>
+
+    <!-- ===== Content ===== -->
+    <div class="blogContent">
+
+      <!-- ===== Teaser / Highlights ===== -->
+      <h2>Whole-Body Loco-Manipulation</h2>
+      <div class="videoContainer">
+        <div class="videoGrid cols-1">
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/all_real.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <h2>Highlights</h2>
+      <ol>
+        <li><b>Unified whole-body motion latent.</b> A single action space of whole-body motion tokens that jointly covers locomotion, torso motion, height regulation, foot interaction, and hand manipulation, replacing the upper&ndash;lower decoupled interface of hierarchical humanoid systems and unlocking task-driven foot behaviors.</li>
+        <li><b>Three-stage egocentric-to-embodiment training.</b> Egocentric video pretraining on 2,136 hours of human and humanoid video, cross-embodiment action post-training, and whole-body teleoperation fine-tuning &mdash; progressively adapting a video world model to first-person dynamics and the target humanoid embodiment.</li>
+        <li><b>State-of-the-art real-world performance.</b> On nine Unitree G1 whole-body tasks, MotionWAM lifts the overall success rate from $43.9\%$ (GR00T-N1.7) to $\mathbf{76.1\%}$, an over <b>+32%</b> absolute gain over the strongest VLA baseline trained on the same demonstrations.</li>
+        <li><b>Real-time WAM for humanoid loco-manipulation.</b> An end-to-end World Action Model that conditions the policy on intermediate denoising features of a video world model, running closed-loop at <b>4.9&nbsp;Hz</b> on a single A100 &mdash; <b>7&times; faster</b> than comparable world-model-based policies such as Cosmos Policy.</li>
+      </ol>
+
+      <!-- ===== Motivation ===== -->
+      <!-- <h2>Decoupled vs. Unified Action Spaces</h2>
+      <p>
+        Almost all autonomous humanoid loco-manipulation systems pair a high-level manipulation policy with a low-level locomotion controller. This forces the upper and lower body into <b>inconsistent action spaces</b>: fine-grained joint targets for the arms, but only coarse base commands (velocity, torso height, orientation) for the legs &mdash; restricting the legs to balance preservation and ruling out task-driven foot behaviors such as stepping on a pedal or kicking an object.
+      </p>
+      <p>
+        MotionWAM replaces this split with a <b>unified motion latent</b>: one policy predicts whole-body motion tokens that drive the humanoid as one integrated system, giving the lower body a task-driven action vocabulary alongside the arms.
+      </p>
+
+      <div class="imageWrapper">
+        <img src="media/figures/intro.png" style="width: 90%;" alt="Decoupled hierarchical pipelines vs. MotionWAM's unified whole-body motion tokens">
+      </div> -->
+
+      <!-- ===== Method ===== -->
+      <h2>Method</h2>
+      <div class="imageWrapper">
+        <img src="media/figures/arch.png" style="width: 100%;" alt="MotionWAM architecture overview">
+      </div>
+      <p>
+        <b>MotionWAM is a dual-DiT World Action Model trained in three stages.</b>
+        <b>Stage 1: </b> the Video DiT is pre-trained alone on egocentric human and humanoid videos.
+        <b>Stage 2: </b> the Motion DiT is attached and co-trained across heterogeneous Unitree G1 datasets via specific embodiment tags, conditioned on Video DiT hidden states to predict discrete motion-token index and continuous end-effector values.
+        <b>Stage 3: </b>  the full model is finetuned on teleoperated whole-body demonstrations retargeted from SMPL-24 to Unitree G1.
+      </p>
+
+      <!-- ===== Real-World Results ===== -->
+      <h2>Real-World Results</h2>
+      <div class="imageWrapper" style="clear: both; display: block; margin-top: 24px;">
+        <img src="media/figures/suc_rate.png" style="width: 100%; display: block; margin: 0 auto;" alt="Per-task success rates on nine real-world Unitree G1 tasks">
+      </div>
+
+      <p>
+        We evaluate MotionWAM on a suite of <b>nine real-world whole-body loco-manipulation tasks</b> on the Unitree G1 humanoid. All baselines are fine-tuned on the same Stage&nbsp;3 demonstrations and emit actions through the same SONIC interface.
+      </p>
+      <p>
+        MotionWAM <b>wins on every task</b> and lifts the overall success rate from $43.9\%$ (GR00T-N1.7) to <b>$76.1\%$</b>, an over $32\%$ absolute gain. The gap is largest on tasks demanding whole-body coordination beyond the upper limbs &mdash; <i>Kick Soccer</i> ($+40\%$), <i>Load Cart</i> ($+40\%$), <i>Retrieve Item</i> ($+40\%$), <i>Wipe Board</i> ($+45\%$), and <i>Do Laundry</i> ($+30\%$) &mdash; where the unified motion latent gives MotionWAM access to task-driven foot and torso behaviors that a decoupled upper&ndash;lower interface cannot express.
+      </p>
+
+      <h3>Task Demonstrations</h3>
+      <!-- Row 1 -->
+      <div class="videoContainer">
+        <div class="videoGrid cols-2">
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/soccer_0.5x.mp4" type="video/mp4">
+            </video>
+            <p class="videoLabel">Kick Soccer (0.5x speed)</p>
+          </div>
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/cart.mp4" type="video/mp4">
+            </video>
+            <p class="videoLabel">Load Cart (1x speed)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="videoContainer">
+        <div class="videoGrid cols-2">
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/bag_drawer.mp4" type="video/mp4">
+            </video>
+            <p class="videoLabel">Retrieve Item (1x speed)</p>
+          </div>
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/blackboard.mp4" type="video/mp4">
+            </video>
+            <p class="videoLabel">Wipe Board (1x speed)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="videoContainer">
+        <div class="videoGrid cols-2">
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/washing.mp4" type="video/mp4">
+            </video>
+            <p class="videoLabel">Do Laundry (1x speed)</p>
+          </div>
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/basket_table.mp4" type="video/mp4">
+            </video>
+            <p class="videoLabel">Lift Basket (1x speed)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="videoContainer">
+        <div class="videoGrid cols-2">
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/trash_can.mp4" type="video/mp4">
+            </video>
+            <p class="videoLabel">Toss Garbage (1x speed)</p>
+          </div>
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/bottle.mp4" type="video/mp4">
+            </video>
+            <p class="videoLabel">PnP Bottle (1x speed)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 5 -->
+      <div class="videoContainer">
+        <div class="videoGrid cols-2">
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/shelf_bottle.mp4" type="video/mp4">
+            </video>
+            <p class="videoLabel">Stock Shelf (bottle) (1x speed)</p>
+          </div>
+          <div class="videoCell">
+            <video controls autoplay loop muted playsinline>
+              <source src="media/videos/shelf_veg.mp4" type="video/mp4">
+            </video>
+            <p class="videoLabel">Stock Shelf (vegetable) (1x speed)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Ablation ===== -->
+      <h2>Ablation: Three-Stage Training</h2>
+
+      <div class="table-container">
+        <table class="table is-bordered is-striped is-hoverable" style="margin: 0 auto; width: auto;">
+          <thead>
+            <tr>
+              <th>Variant</th>
+              <th>Stage&nbsp;1</th>
+              <th>Stage&nbsp;2</th>
+              <th>Lift Basket</th>
+              <th>Retrieve Item</th>
+              <th>Load Cart</th>
+              <th>Toss Garbage</th>
+              <th>Kick Soccer</th>
+              <th>Avg.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>w/o Stage&nbsp;2</td>
+              <td>&#10003;</td>
+              <td>&mdash;</td>
+              <td>65</td>
+              <td>45</td>
+              <td>30</td>
+              <td>30</td>
+              <td>40</td>
+              <td>42.0</td>
+            </tr>
+            <tr>
+              <td>w/o Stage&nbsp;1</td>
+              <td>&mdash;</td>
+              <td>&#10003;</td>
+              <td>70</td>
+              <td>75</td>
+              <td>60</td>
+              <td>35</td>
+              <td>55</td>
+              <td>59.0</td>
+            </tr>
+            <tr style="font-weight: bold; background-color: #fdf6e3;">
+              <td>Full</td>
+              <td>&#10003;</td>
+              <td>&#10003;</td>
+              <td>80</td>
+              <td>90</td>
+              <td>75</td>
+              <td>45</td>
+              <td>60</td>
+              <td>70.0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        We disentangle the contribution of each pretraining stage by disabling one stage at a time while keeping Stage&nbsp;3 fixed. Removing Stage&nbsp;1 (egocentric video pretraining) costs $11\%$ absolute success; removing Stage&nbsp;2 (cross-embodiment action post-training) costs $28\%$. The two stages play complementary roles: Stage&nbsp;1 supplies an egocentric <i>visual-dynamics</i> prior, while Stage&nbsp;2 grounds that prior into the action space across embodiments.
+      </p>
+
+      <!-- ===== Real-Time Inference ===== -->
+      <h2>Real-Time Inference</h2>
+
+      <div class="table-container">
+        <table class="table is-bordered is-striped is-hoverable" style="margin: 0 auto; width: auto;">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Trainable Params</th>
+              <th>Frequency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GR00T-N1.7</td>
+              <td>1.6 B</td>
+              <td>6.5 Hz</td>
+            </tr>
+            <tr>
+              <td>Qwen3DiT</td>
+              <td>2.3 B</td>
+              <td>9.0 Hz</td>
+            </tr>
+            <tr>
+              <td>Cosmos Policy</td>
+              <td>2.0 B</td>
+              <td>0.7 Hz</td>
+            </tr>
+            <tr style="font-weight: bold; background-color: #fdf6e3;">
+              <td>MotionWAM (Ours)</td>
+              <td>2.5 B</td>
+              <td>4.9 Hz</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Because MotionWAM conditions on a <b>single forward pass</b> of the Video DiT rather than a full denoising rollout, it remains real-time on a closed-loop humanoid. On an NVIDIA A100, MotionWAM runs at $4.9$&nbsp;Hz at the chunk-wise rate &mdash; competitive with VLA baselines of similar scale, and <b>seven times faster</b> than Cosmos Policy, the closest world-model-based policy at comparable parameter count.
+      </p>
+
+      <!-- ===== Citation ===== -->
+      <h2>BibTeX</h2>
+      <pre class="bibtex">@misc{zheng2026motionwamfoundationworldaction,
+      title={MotionWAM: Towards Foundation World Action Models for Real-Time Humanoid Loco-Manipulation}, 
+      author={Jia Zheng and Teli Ma and Yudong Fan and Zifan Wang and Shuo Yang and Junwei Liang},
+      year={2026},
+      eprint={2606.09215},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2606.09215}, 
+      }</pre>
+
+    </div><!-- .blogContent -->
+  </article>
+
+  <footer class="siteFooter"></footer>
+
+</body>
+
+</html>
